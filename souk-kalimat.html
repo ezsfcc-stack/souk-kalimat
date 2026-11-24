@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2F5DA8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>سوق الكلمات – فرنساوي للأطفال</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#EAF3FC; --ink:#1D2B4F; --muted:#5B6B8C; --card:#FFFFFF; --line:#C9D7EC;
+  --awning:#2F5DA8; --stripe:#FFFFFF; --sun:#FFD23F; --on-sun:#1D2B4F;
+  --tomato:#E4572E; --leaf:#2E9E55; --slot:#F3F7FD;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --sky:#0F1A2E; --ink:#EAF0FA; --muted:#9FB0CC; --card:#18253D; --line:#2C3D5C;
+    --awning:#3F6FC2; --stripe:#DCE6F5; --tomato:#FF7A55; --leaf:#5CCB7D; --slot:#20304D;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --sky:#0F1A2E; --ink:#EAF0FA; --muted:#9FB0CC; --card:#18253D; --line:#2C3D5C;
+  --awning:#3F6FC2; --stripe:#DCE6F5; --tomato:#FF7A55; --leaf:#5CCB7D; --slot:#20304D;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  background:var(--sky); color:var(--ink);
+  font-family:"Baloo Bhaijaan 2","Segoe UI",Tahoma,Arial,sans-serif;
+  font-size:18px; line-height:1.5;
+  -webkit-tap-highlight-color:transparent;
+}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.fr{direction:ltr;unicode-bidi:isolate}
+
+/* Awning */
+.awning{
+  position:relative; padding:18px 16px 30px; text-align:center; color:#fff;
+  background:repeating-linear-gradient(90deg,var(--awning) 0 44px,var(--stripe) 44px 88px);
+}
+.awning::after{
+  content:""; position:absolute; left:0; right:0; bottom:-16px; height:16px;
+  background:radial-gradient(circle at 22px 0,var(--awning) 21px,transparent 22px) 0 0/88px 16px repeat-x,
+             radial-gradient(circle at 66px 0,var(--stripe) 21px,transparent 22px) 0 0/88px 16px repeat-x;
+}
+.sign{
+  display:inline-block; background:var(--sun); color:var(--on-sun);
+  padding:6px 22px 4px; border-radius:16px; box-shadow:0 4px 0 #C99A00;
+}
+.sign h1{margin:0;font-size:32px;line-height:1.2;font-weight:800}
+.sign p{margin:0;font-size:16px;font-weight:700}
+
+main{max-width:560px;margin:0 auto;padding:30px 16px 40px}
+
+/* Home */
+.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.cat{
+  background:var(--card); border:2px solid var(--line); border-radius:22px;
+  padding:14px 10px 10px; display:flex; flex-direction:column; align-items:center; gap:2px;
+  box-shadow:0 5px 0 var(--line); transition:transform .1s;
+}
+.cat:active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
+.cat .ic{font-size:46px;line-height:1.1}
+.cat .nm{font-weight:800;font-size:20px}
+.cat .st{font-size:14px;color:var(--muted)}
+.hint{color:var(--muted);text-align:center;font-size:15px;margin:22px 0 0}
+
+/* Bars */
+.top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.back{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:4px 14px;font-weight:700}
+.prog{flex:1;height:12px;background:var(--line);border-radius:8px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--leaf);border-radius:8px;transition:width .3s}
+.stars{font-weight:800;white-space:nowrap}
+h2{margin:0 0 12px;font-size:26px;text-align:center}
+
+/* Activities */
+.acts{display:flex;flex-direction:column;gap:12px}
+.act{
+  display:flex;align-items:center;gap:14px;text-align:start;
+  background:var(--card);border:2px solid var(--line);border-radius:20px;padding:12px 16px;
+  box-shadow:0 5px 0 var(--line);
+}
+.act:active{transform:translateY(4px);box-shadow:0 1px 0 var(--line)}
+.act .ic{font-size:36px}
+.act b{display:block;font-size:20px}
+.act span{color:var(--muted);font-size:15px}
+
+/* Prompt */
+.prompt{
+  background:var(--card);border:2px solid var(--line);border-radius:26px;
+  padding:16px;text-align:center;margin-bottom:16px;position:relative;
+}
+.emo{font-size:84px;line-height:1.1;display:block}
+.tint-a{filter:hue-rotate(-30deg) saturate(.55) brightness(1.2)}
+.tint-b{filter:hue-rotate(18deg) saturate(1.4)}
+.num{
+  display:inline-grid;place-items:center;width:110px;height:110px;border-radius:50%;
+  background:var(--sun);color:var(--on-sun);font-size:62px;font-weight:800;
+}
+.ar{font-size:22px;font-weight:700;color:var(--muted);margin-top:4px}
+.say{
+  position:absolute;top:10px;inset-inline-start:10px;width:52px;height:52px;border-radius:50%;
+  background:var(--sun);color:var(--on-sun);font-size:26px;box-shadow:0 4px 0 #C99A00;
+}
+.say:active{transform:translateY(3px);box-shadow:0 1px 0 #C99A00}
+
+/* Word + slots */
+.word{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin:6px 0 18px}
+.wg{display:flex;gap:5px}
+.ch,.slot{
+  min-width:40px;height:52px;border-radius:12px;display:grid;place-items:center;
+  font-size:30px;font-weight:800;padding:0 4px;
+}
+.ch{background:transparent}
+.slot{background:var(--slot);border:3px dashed var(--awning);color:var(--awning)}
+.slot.ok{border-style:solid;border-color:var(--leaf);color:var(--leaf)}
+.slot.full{border-style:solid}
+.fix{min-width:14px;height:52px;display:grid;place-items:center;font-size:30px;font-weight:800}
+
+.tiles{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.tile{
+  min-width:56px;height:60px;padding:0 14px;border-radius:16px;
+  background:var(--sun);color:var(--on-sun);font-size:30px;font-weight:800;
+  box-shadow:0 5px 0 #C99A00;
+}
+.tile:active{transform:translateY(4px);box-shadow:0 1px 0 #C99A00}
+.tile.used{visibility:hidden}
+.tile.wordt{font-size:24px;height:54px}
+
+.answer{
+  min-height:70px;border:3px dashed var(--line);border-radius:18px;padding:8px;
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-content:center;margin-bottom:16px;
+}
+.answer .tile{background:var(--card);color:var(--ink);border:2px solid var(--awning);box-shadow:none}
+
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  background:var(--card);border:2px solid var(--line);border-radius:18px;padding:12px;
+  font-size:24px;font-weight:800;box-shadow:0 4px 0 var(--line);
+}
+.opt.bad{border-color:var(--tomato);color:var(--tomato);opacity:.6}
+.opt.good{border-color:var(--leaf);background:var(--leaf);color:#fff}
+
+/* Learn */
+.learn .big{font-size:38px;font-weight:800;margin-top:6px;line-height:1.25}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:4px}
+.nav button{flex:1;background:var(--awning);color:#fff;border-radius:16px;padding:10px;font-weight:800;font-size:20px;box-shadow:0 4px 0 #1E3F75}
+.nav button:disabled{opacity:.35}
+.count{text-align:center;color:var(--muted);margin-top:10px}
+
+/* Feedback */
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}
+.bravo{
+  position:fixed;inset:0;display:grid;place-items:center;pointer-events:none;z-index:20;
+}
+.bravo div{
+  background:var(--leaf);color:#fff;font-size:40px;font-weight:800;padding:10px 34px;border-radius:24px;
+  animation:pop .5s ease-out;
+}
+@keyframes pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+
+/* End */
+.end{text-align:center}
+.end .ic{font-size:90px}
+.end .sc{font-size:30px;font-weight:800;margin:6px 0 20px}
+.btn{display:block;width:100%;background:var(--awning);color:#fff;border-radius:18px;padding:12px;font-size:22px;font-weight:800;margin-bottom:12px;box-shadow:0 5px 0 #1E3F75}
+.btn.alt{background:var(--card);color:var(--ink);border:2px solid var(--line);box-shadow:0 5px 0 var(--line)}
+
+/* Grammar */
+.sec{margin:4px 4px 12px;font-size:22px}
+.sec.g{margin-top:28px}
+.rule{background:var(--card);border-inline-start:6px solid var(--sun);border-radius:14px;padding:10px 14px;margin:0 0 14px;font-size:17px}
+.sub{margin:4px 0 8px;font-size:20px}
+.tbl{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.row{display:flex;align-items:center;gap:12px;background:var(--card);border:2px solid var(--line);border-radius:14px;padding:8px 14px;text-align:start}
+.row .fr{font-size:22px;font-weight:800;flex:1;text-align:left}
+.row .ra{color:var(--muted);font-weight:700;font-size:16px}
+.row b{color:var(--tomato)}
+.row .e{font-size:28px}
+.row small{display:block;color:var(--muted);font-size:14px;font-weight:700;direction:rtl;text-align:left}
+.sent{font-size:30px;font-weight:800;text-align:center;margin:4px 0 18px;line-height:1.7}
+.blank{display:inline-block;min-width:80px;border-bottom:4px solid var(--awning);margin:0 4px;color:var(--awning);text-align:center}
+.blank.ok{color:var(--leaf);border-color:var(--leaf)}
+.opts.g2{display:grid;grid-template-columns:1fr 1fr}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="awning">
+  <div class="sign"><h1>سوق الكلمات</h1><p>نتعلم فرنساوي ونلعب</p></div>
+</header>
+<main id="app"></main>
+
+<script>
+// ---------- Data ----------
+// [French, key used in spelling games, Arabic, emoji, tint]
+const NUMS = ["un","deux","trois","quatre","cinq","six","sept","huit","neuf","dix","onze","douze","treize","quatorze","quinze","seize","dix-sept","dix-huit","dix-neuf","vingt","vingt et un","vingt-deux","vingt-trois","vingt-quatre","vingt-cinq","vingt-six","vingt-sept","vingt-huit","vingt-neuf","trente"];
+const toAr = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+
+const CATS = [
+  {id:"veg", name:"الخضار", icon:"🥕", type:"w", items:[
+    ["Des laitues","laitues","خس","🥬"],
+    ["Des carottes","carottes","جزر","🥕"],
+    ["Des concombres","concombres","خيار","🥒"],
+    ["Des haricots verts","haricots verts","فاصوليا خضرا","🫛"],
+    ["Des tomates","tomates","طماطم","🍅"],
+    ["Des courgettes","courgettes","كوسة","🥒","a"],
+    ["Des petits pois","petits pois","بسلة","🟢"],
+    ["Des pommes de terre","pommes de terre","بطاطس","🥔"]]},
+  {id:"fruit", name:"الفاكهة", icon:"🍓", type:"w", items:[
+    ["Des bananes","bananes","موز","🍌"],
+    ["Des fraises","fraises","فراولة","🍓"],
+    ["Des oranges","oranges","برتقال","🍊"],
+    ["Des pêches","pêches","خوخ","🍑"],
+    ["Des pommes","pommes","تفاح","🍎"],
+    ["Des poires","poires","كمترى","🍐"],
+    ["Des abricots","abricots","مشمش","🍑","b"],
+    ["Des mangues","mangues","مانجا","🥭"]]},
+  {id:"market", name:"في السوق", icon:"🛒", type:"s", items:[
+    ["Je veux un kilo de tomates.","","عايز كيلو طماطم","🍅"],
+    ["Je veux un kilo de bananes.","","عايز كيلو موز","🍌"],
+    ["Je veux un kilo de pommes.","","عايز كيلو تفاح","🍎"],
+    ["Je veux un kilo de carottes.","","عايز كيلو جزر","🥕"]]},
+  {id:"greet", name:"التحية والتعارف", icon:"👋", type:"s", items:[
+    ["Salut! Comment ça va?","","أهلًا! إزيك؟","👋"],
+    ["Ça va bien, merci.","","كويس، شكرًا","😊"],
+    ["Bonjour, comment tu t’appelles?","","صباح الخير، اسمك إيه؟","🙋‍♀️"],
+    ["Je m’appelle Céline.","","اسمي سيلين","👧"],
+    ["Quel âge as-tu?","","عندك كام سنة؟","🎂"],
+    ["J’ai 9 ans.","","عندي ٩ سنين","🎈"],
+    ["Comment il s’appelle?","","هو اسمه إيه؟","👦"],
+    ["Il s’appelle Sami.","","اسمه سامي","🧒"],
+    ["Comment elle s’appelle?","","هي اسمها إيه؟","❓"],
+    ["Elle s’appelle Sara.","","اسمها سارة","👩"]]},
+  {id:"recre", name:"في الفسحة", icon:"🏫", type:"s", items:[
+    ["Je cours.","","أنا بجري","🏃"],
+    ["Je joue.","","أنا بلعب","🤸"],
+    ["Je mange.","","أنا باكل","🌭"],
+    ["J’aime la récré.","","أنا بحب الفسحة","🏫"],
+    ["Je bois un jus.","","أنا بشرب عصير","🧃"]]},
+  {id:"body", name:"أجزاء الجسم", icon:"👀", type:"w", items:[
+    ["La tête","tête","الراس","🙂"],
+    ["Les cheveux","cheveux","الشعر","💇‍♀️"],
+    ["Les yeux","yeux","العينين","👀"],
+    ["Le nez","nez","المناخير","👃"],
+    ["Les oreilles","oreilles","الودان","👂"],
+    ["La bouche","bouche","البُق","👄"],
+    ["Le cou","cou","الرقبة","🧣"],
+    ["Les mains","mains","الإيدين","🙌"],
+    ["Les jambes","jambes","الرجلين","🦵"],
+    ["Les pieds","pieds","القدمين","🦶"]]},
+  {id:"bodys", name:"بعمل إيه بجسمي؟", icon:"✋", type:"s", items:[
+    ["J’écoute avec les oreilles.","","بسمع بوداني","👂"],
+    ["Je vois avec les yeux.","","بشوف بعينيا","👀"],
+    ["Je sens l’odeur avec le nez.","","بشم الريحة بمناخيري","👃"],
+    ["J’écris avec les mains.","","بكتب بإيديا","✍️"],
+    ["Je marche avec les pieds.","","بمشي برجليا","🚶"],
+    ["Je mange avec la bouche.","","باكل ببُقي","😋"]]},
+  {id:"num", name:"الأرقام ١–٣٠", icon:"🔢", type:"w",
+    items: NUMS.map((w,i)=>[w[0].toUpperCase()+w.slice(1), w, toAr(i+1), String(i+1), "n"])}
+].map(c => ({...c, items: c.items.map(a => ({fr:a[0], key:a[1]||a[0], ar:a[2], e:a[3], t:a[4]||""}))}));
+
+// Grammar: the word between [ ] is the blank
+const GRAM = [
+  {id:"etre", name:"فعل être", icon:"🧍", type:"g",
+    rule:"فعل <b class='fr'>être</b> معناه «يكون». بنستخدمه عشان نقول الشخص مين، أو شكله إيه، أو هو فين.",
+    table:[["Je suis","أنا"],["Tu es","إنتَ / إنتِ"],["Il est","هو"],["Elle est","هي"],["Nous sommes","إحنا"],["Vous êtes","إنتم"],["Ils sont","هم (ولاد)"],["Elles sont","هم (بنات)"]],
+    items:[["Je [suis] Céline.","أنا سيلين","👧"],["Tu [es] mon ami.","إنت صاحبي","🤝"],["Il [est] grand.","هو طويل","🧍"],["Elle [est] belle.","هي حلوة","🌸"],["Nous [sommes] à l’école.","إحنا في المدرسة","🏫"],["Vous [êtes] contents.","إنتم مبسوطين","😄"],["Ils [sont] au marché.","هم في السوق","🛒"],["Elles [sont] dans la classe.","هم في الفصل","📚"]]},
+  {id:"avoir", name:"فعل avoir", icon:"🎒", type:"g",
+    rule:"فعل <b class='fr'>avoir</b> معناه «عنده / معاه». وبنقول بيه السن كمان: <span class='fr'>J’ai 9 ans</span> يعني عندي ٩ سنين.",
+    table:[["J’ai","أنا عندي"],["Tu as","إنت عندك"],["Il a","هو عنده"],["Elle a","هي عندها"],["Nous avons","إحنا عندنا"],["Vous avez","إنتم عندكم"],["Ils ont","هم عندهم (ولاد)"],["Elles ont","هم عندهم (بنات)"]],
+    items:[["J’[ai] 9 ans.","عندي ٩ سنين","🎂"],["Tu [as] une pomme.","معاك تفاحة","🍎"],["Il [a] un ballon.","معاه كورة","⚽"],["Elle [a] une poupée.","معاها عروسة","🪆"],["Nous [avons] des bananes.","معانا موز","🍌"],["Vous [avez] un chat.","عندكم قطة","🐱"],["Ils [ont] des livres.","معاهم كتب","📚"],["Elles [ont] des fraises.","معاهم فراولة","🍓"]]},
+  {id:"jouer", name:"أفعال -er (jouer)", icon:"⚽", type:"g",
+    rule:"الأفعال اللي آخرها <b class='fr'>er</b> زي <span class='fr'>jouer, manger, aimer</span>: نشيل er ونزوّد <span class='fr'>e – es – e – ons – ez – ent</span>.",
+    table:[["Je joue","أنا بلعب"],["Tu joues","إنت بتلعب"],["Il joue","هو بيلعب"],["Elle joue","هي بتلعب"],["Nous jouons","إحنا بنلعب"],["Vous jouez","إنتم بتلعبوا"],["Ils jouent","هم بيلعبوا (ولاد)"],["Elles jouent","هم بيلعبوا (بنات)"]],
+    items:[["Je [joue] au ballon.","أنا بلعب كورة","⚽"],["Tu [joues] avec moi.","إنت بتلعب معايا","🤝"],["Il [joue] dans la cour.","هو بيلعب في الحوش","🏃"],["Elle [joue] à la récré.","هي بتلعب في الفسحة","🤸"],["Nous [jouons] ensemble.","إحنا بنلعب مع بعض","👫"],["Vous [jouez] bien.","إنتم بتلعبوا كويس","👏"],["Ils [jouent] au foot.","هم بيلعبوا كورة قدم","🥅"],["Elles [jouent] à la corde.","هم بيلعبوا نط الحبل","🪢"]]},
+  {id:"lela", name:"le – la – les – l’", icon:"🔤", type:"g", noOrder:true,
+    rule:"<b class='fr'>le</b> قبل الكلمة المذكر، <b class='fr'>la</b> قبل المؤنث، <b class='fr'>les</b> قبل الجمع، و <b class='fr'>l’</b> قبل الكلمة اللي بتبدأ بحرف متحرك (a e i o u).",
+    table:[["le nez","مذكر"],["la tête","مؤنث"],["les yeux","جمع"],["l’école","بتبدأ بحرف متحرك"]],
+    items:[["[La] tête","الراس","🙂"],["[Le] nez","المناخير","👃"],["[Les] yeux","العينين","👀"],["[La] bouche","البُق","👄"],["[Le] cou","الرقبة","🧣"],["[Les] mains","الإيدين","🙌"],["[L’]école","المدرسة","🏫"],["[Les] pieds","القدمين","🦶"],["[La] pomme","التفاحة","🍎"],["[Le] ballon","الكورة","⚽"],["[L’]orange","البرتقالة","🍊"]]},
+  {id:"unune", name:"un – une – des", icon:"1️⃣", type:"g", noOrder:true,
+    rule:"<b class='fr'>un</b> مع المذكر، <b class='fr'>une</b> مع المؤنث، <b class='fr'>des</b> مع الجمع.",
+    table:[["un ballon","مذكر"],["une pomme","مؤنث"],["des bananes","جمع"]],
+    items:[["[Un] ballon","كورة","⚽"],["[Une] pomme","تفاحة","🍎"],["[Des] bananes","موز","🍌"],["[Un] chat","قطة","🐱"],["[Une] poupée","عروسة","🪆"],["[Des] fraises","فراولة","🍓"],["[Un] livre","كتاب","📕"],["[Une] orange","برتقالة","🍊"],["[Des] carottes","جزر","🥕"],["[Un] nez","مناخير","👃"]]}
+].map(c => {
+  const items = c.items.map(a => {
+    const m = a[0].match(/\[(.+?)\]/), fr = a[0].replace(/[\[\]]/g, "");
+    return {fr, key:fr, ar:a[1], e:a[2], t:"", ans:m[1], pos:m.index};
+  });
+  return {...c, items, forms:[...new Set(items.map(i => i.ans))]};
+});
+CATS.push(...GRAM);
+
+// ---------- Helpers ----------
+const $app = document.getElementById("app");
+const isL = ch => /\p{L}/u.test(ch);
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pic = it => it.t==="n" ? `<span class="num">${it.e}</span>` : `<span class="emo ${it.t?'tint-'+it.t:''}">${it.e}</span>`;
+
+function load(){ try { return JSON.parse(localStorage.getItem("souk-best")||"{}"); } catch(e){ return {}; } }
+function save(o){ try { localStorage.setItem("souk-best", JSON.stringify(o)); } catch(e){} }
+
+// Speech
+let frVoice = null;
+function pickVoice(){ if(!window.speechSynthesis) return; const vs = speechSynthesis.getVoices(); frVoice = vs.find(v=>v.lang==="fr-FR") || vs.find(v=>v.lang && v.lang.startsWith("fr")) || null; }
+if (window.speechSynthesis){ pickVoice(); speechSynthesis.onvoiceschanged = pickVoice; }
+function speak(t){
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(t.replace(/’/g,"'"));
+  u.lang = "fr-FR"; u.rate = 0.8; if (frVoice) u.voice = frVoice;
+  speechSynthesis.speak(u);
+}
+
+// Sounds
+let ac = null;
+function tone(freqs, dur=0.12, type="sine"){
+  try{
+    ac = ac || new (window.AudioContext||window.webkitAudioContext)();
+    freqs.forEach((f,i)=>{
+      const o=ac.createOscillator(), g=ac.createGain(), t=ac.currentTime+i*dur;
+      o.type=type; o.frequency.value=f; g.gain.setValueAtTime(0.18,t); g.gain.exponentialRampToValueAtTime(0.001,t+dur*1.6);
+      o.connect(g).connect(ac.destination); o.start(t); o.stop(t+dur*1.7);
+    });
+  }catch(e){}
+}
+const ding = () => tone([660,880,1100],0.1);
+const buzz = () => tone([180],0.2,"square");
+
+// ---------- State ----------
+let S = {};
+
+// ---------- Screens ----------
+function home(){
+  const best = load();
+  const card = c => `
+        <button class="cat" data-c="${c.id}">
+          <span class="ic">${c.icon}</span>
+          <span class="nm ${c.type==="g"?"fr":""}">${c.name}</span>
+          <span class="st">${best[c.id] ? "⭐ أحسن نتيجة: "+toAr(best[c.id]) : (c.type==="w"?"كلمات":c.type==="s"?"جمل":"قاعدة + تمارين")+" • "+toAr(c.items.length)}</span>
+        </button>`;
+  $app.innerHTML = `
+    <h3 class="sec">📚 الكلمات</h3>
+    <div class="cats">${CATS.filter(c=>c.type!=="g").map(card).join("")}</div>
+    <h3 class="sec g">✏️ القواعد (Grammaire)</h3>
+    <div class="cats">${CATS.filter(c=>c.type==="g").map(card).join("")}</div>
+    <p class="hint">اضغطي 🔊 عشان تسمعي النطق بالفرنساوي</p>`;
+  $app.querySelectorAll(".cat").forEach(b => b.onclick = () => catScreen(CATS.find(c=>c.id===b.dataset.c)));
+  window.scrollTo(0,0);
+}
+
+function catScreen(cat){
+  S = {cat};
+  if (cat.type==="g") return gramScreen(cat);
+  const isW = cat.type==="w";
+  $app.innerHTML = `
+    <div class="top"><button class="back" id="bk">→ رجوع</button></div>
+    <h2>${cat.icon} ${cat.name}</h2>
+    <div class="acts">
+      <button class="act" data-g="learn"><span class="ic">📖</span><div><b>اتعلم</b><span>شوف الصورة واسمع الكلمة</span></div></button>
+      <button class="act" data-g="missing"><span class="ic">🧩</span><div><b>الحروف الناقصة</b><span>كمّل الحروف اللي مش موجودة</span></div></button>
+      <button class="act" data-g="${isW?'scramble':'order'}"><span class="ic">🔀</span><div><b>${isW?'رتّب الحروف':'رتّب الكلمات'}</b><span>${isW?'الحروف متلخبطة، رتبها صح':'الجملة متلخبطة، رتبها صح'}</span></div></button>
+      <button class="act" data-g="choose"><span class="ic">✅</span><div><b>اختار الصح</b><span>اختار الكلمة اللي على الصورة</span></div></button>
+    </div>`;
+  document.getElementById("bk").onclick = home;
+  $app.querySelectorAll(".act").forEach(b => b.onclick = () => b.dataset.g==="learn" ? learn(cat,0) : startGame(cat,b.dataset.g));
+  window.scrollTo(0,0);
+}
+
+function learn(cat,i){
+  const it = cat.items[i];
+  $app.innerHTML = `
+    <div class="top"><button class="back" id="bk">→ رجوع</button>
+      <div class="prog"><i style="width:${(i+1)/cat.items.length*100}%"></i></div></div>
+    <div class="prompt learn" id="card">
+      <button class="say" id="say" aria-label="اسمع">🔊</button>
+      ${pic(it)}
+      <div class="big fr">${esc(it.fr)}</div>
+      <div class="ar">${it.ar}</div>
+    </div>
+    <div class="nav">
+      <button id="nx" ${i===cat.items.length-1?'disabled':''}>→ التالي</button>
+      <button id="pv" ${i===0?'disabled':''}>السابق ←</button>
+    </div>
+    <div class="count">${toAr(i+1)} من ${toAr(cat.items.length)}</div>`;
+  document.getElementById("bk").onclick = () => catScreen(cat);
+  document.getElementById("card").onclick = () => speak(it.fr);
+  document.getElementById("nx").onclick = () => learn(cat,i+1);
+  document.getElementById("pv").onclick = () => learn(cat,i-1);
+  speak(it.fr);
+}
+
+function startGame(cat, game){
+  S = {cat, game, queue: shuffle(cat.items).slice(0,10), i:0, first:0};
+  nextQ();
+}
+
+function header(){
+  const n = S.queue.length;
+  return `<div class="top"><button class="back" id="bk">→ رجوع</button>
+    <div class="prog"><i style="width:${S.i/n*100}%"></i></div>
+    <span class="stars">⭐ ${toAr(S.first)}</span></div>`;
+}
+function promptBox(it){
+  return `<div class="prompt"><button class="say" id="say" aria-label="اسمع">🔊</button>${pic(it)}<div class="ar">${it.ar}</div></div>`;
+}
+function wire(it){
+  document.getElementById("bk").onclick = () => catScreen(S.cat);
+  const s = document.getElementById("say"); if (s) s.onclick = () => speak(it.fr);
+}
+
+function nextQ(){
+  if (S.i >= S.queue.length) return endScreen();
+  const it = S.queue[S.i];
+  S.q = {it, mist:0};
+  ({missing:setupMissing, scramble:setupScramble, order:setupOrder, choose:setupChoose, fill:setupFill})[S.game]();
+}
+
+function win(){
+  if (S.q.mist===0) S.first++;
+  ding(); speak(S.q.it.fr);
+  const b = document.createElement("div"); b.className="bravo";
+  b.innerHTML = `<div>${["برافو! 🎉","شاطرة! ⭐","هايل! 👏","ممتاز! 🌟"][Math.floor(Math.random()*4)]}</div>`;
+  document.body.appendChild(b);
+  setTimeout(()=>{ b.remove(); S.i++; nextQ(); }, 1500);
+}
+function oops(el){ S.q.mist++; buzz(); if(el){ el.classList.remove("shake"); void el.offsetWidth; el.classList.add("shake"); } }
+
+// Build word display grouped by spaces so lines only break between words
+function wordHTML(key, cellFn){
+  let out = "", idx = 0;
+  key.split(" ").forEach(w => {
+    out += `<span class="wg">`;
+    for (const ch of [...w]) { out += cellFn(ch, idx); idx++; }
+    out += `</span>`; idx++; // space
+  });
+  return `<div class="word fr">${out}</div>`;
+}
+
+// ----- Missing letters -----
+function setupMissing(){
+  const q = S.q, chars = [...q.it.key];
+  let pos = chars.map((c,i)=>isL(c)?i:-1).filter(i=>i>=0);
+  if (q.it.ans) pos = pos.filter(i => i>=q.it.pos && i<q.it.pos+q.it.ans.length);
+  const nL = pos.length, nb = q.it.ans ? (nL<=3?1 : nL<=5?2 : 3) : (nL<=4?1 : nL<=8?2 : 3);
+  q.chars = chars;
+  q.blanks = shuffle(pos).slice(0,nb).sort((a,b)=>a-b);
+  q.filled = {};
+  const need = [...new Set(q.blanks.map(b=>chars[b].toLowerCase()))];
+  const pool = shuffle("abcdeéfghijlmnoprstuvz".split("").filter(c=>!need.includes(c)));
+  q.tiles = shuffle([...need, ...pool.slice(0, Math.max(3, 6-need.length))]);
+  renderMissing();
+}
+function renderMissing(){
+  const q = S.q;
+  $app.innerHTML = header() + promptBox(q.it) +
+    wordHTML(q.it.key, (ch,i) => {
+      if (!q.blanks.includes(i)) return isL(ch) ? `<span class="ch">${esc(ch)}</span>` : `<span class="fix">${esc(ch)}</span>`;
+      return q.filled[i] ? `<span class="slot ok">${esc(ch)}</span>` : `<span class="slot"></span>`;
+    }) +
+    `<div class="tiles">${q.tiles.map((t,k)=>`<button class="tile" data-k="${k}">${t}</button>`).join("")}</div>`;
+  wire(q.it);
+  $app.querySelectorAll(".tile").forEach(b => b.onclick = () => {
+    const nb = q.blanks.find(x => !q.filled[x]);
+    if (nb===undefined) return;
+    if (q.tiles[b.dataset.k] === q.chars[nb].toLowerCase()){
+      q.filled[nb] = true; tone([700],0.06); renderMissing();
+      if (q.blanks.every(x=>q.filled[x])) win();
+    } else oops(b);
+  });
+}
+
+// ----- Scramble letters -----
+function setupScramble(){
+  const q = S.q, chars = [...q.it.key];
+  q.chars = chars;
+  q.slots = chars.map((c,i)=>isL(c)?i:-1).filter(i=>i>=0);
+  const letters = q.slots.map(i=>chars[i].toLowerCase());
+  let sh = shuffle(letters), tries = 0;
+  while (letters.length>1 && sh.join("")===letters.join("") && tries++<10) sh = shuffle(letters);
+  q.pool = sh.map(ch=>({ch, used:false}));
+  q.placed = q.slots.map(()=>null); // pool index per slot
+  renderScramble();
+}
+function renderScramble(){
+  const q = S.q;
+  $app.innerHTML = header() + promptBox(q.it) +
+    wordHTML(q.it.key, (ch,i) => {
+      const si = q.slots.indexOf(i);
+      if (si<0) return `<span class="fix">${esc(ch)}</span>`;
+      const p = q.placed[si];
+      return p===null ? `<span class="slot" data-s="${si}"></span>` : `<button class="slot full" data-s="${si}">${esc(q.pool[p].ch)}</button>`;
+    }) +
+    `<div class="tiles">${q.pool.map((t,k)=>`<button class="tile ${t.used?'used':''}" data-k="${k}">${t.ch}</button>`).join("")}</div>`;
+  wire(q.it);
+  $app.querySelectorAll("button.slot").forEach(b => b.onclick = () => {
+    const si = +b.dataset.s, p = q.placed[si];
+    if (p!==null){ q.pool[p].used=false; q.placed[si]=null; renderScramble(); }
+  });
+  $app.querySelectorAll(".tile").forEach(b => b.onclick = () => {
+    const k = +b.dataset.k, si = q.placed.indexOf(null);
+    if (si<0 || q.pool[k].used) return;
+    q.pool[k].used = true; q.placed[si] = k; tone([600],0.05); renderScramble();
+    if (!q.placed.includes(null)) checkScramble();
+  });
+}
+function checkScramble(){
+  const q = S.q;
+  const ok = q.slots.every((ci,si)=>q.pool[q.placed[si]].ch === q.chars[ci].toLowerCase());
+  if (ok) return win();
+  oops(document.querySelector(".word"));
+  setTimeout(()=>{ q.pool.forEach(t=>t.used=false); q.placed=q.placed.map(()=>null); renderScramble(); }, 800);
+}
+
+// ----- Order words (sentences) -----
+function setupOrder(){
+  const q = S.q; q.words = q.it.fr.split(" ");
+  let sh = shuffle(q.words.map((w,i)=>i)), tries=0;
+  while (q.words.length>1 && sh.map(i=>q.words[i]).join(" ")===q.it.fr && tries++<10) sh = shuffle(sh);
+  q.pool = sh; q.placed = [];
+  renderOrder();
+}
+function renderOrder(){
+  const q = S.q;
+  $app.innerHTML = header() + promptBox(q.it) +
+    `<div class="answer fr" id="ans">${q.placed.map((p,k)=>`<button class="tile wordt" data-a="${k}">${esc(q.words[q.pool[p]])}</button>`).join("") || '<span style="color:var(--muted)">اضغطي على الكلمات بالترتيب</span>'}</div>
+     <div class="tiles fr">${q.pool.map((wi,p)=>`<button class="tile wordt ${q.placed.includes(p)?'used':''}" data-p="${p}">${esc(q.words[wi])}</button>`).join("")}</div>`;
+  wire(q.it);
+  $app.querySelectorAll("[data-a]").forEach(b => b.onclick = () => { q.placed.splice(+b.dataset.a,1); renderOrder(); });
+  $app.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
+    const p = +b.dataset.p; if (q.placed.includes(p)) return;
+    q.placed.push(p); tone([600],0.05); renderOrder();
+    if (q.placed.length === q.words.length){
+      if (q.placed.map(p=>q.words[q.pool[p]]).join(" ") === q.it.fr) win();
+      else { oops(document.getElementById("ans")); setTimeout(()=>{ q.placed=[]; renderOrder(); }, 800); }
+    }
+  });
+}
+
+// ----- Choose -----
+function setupChoose(){
+  const q = S.q;
+  const others = shuffle(S.cat.items.filter(x=>x!==q.it)).slice(0,3);
+  q.opts = shuffle([q.it, ...others]); q.bad = [];
+  renderChoose();
+}
+function renderChoose(){
+  const q = S.q;
+  $app.innerHTML = header() + promptBox(q.it) +
+    `<div class="opts">${q.opts.map((o,k)=>`<button class="opt fr ${q.bad.includes(k)?'bad':''}" data-k="${k}" ${q.bad.includes(k)?'disabled':''}>${esc(o.fr)}</button>`).join("")}</div>`;
+  wire(q.it);
+  $app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    const k = +b.dataset.k;
+    if (q.opts[k]===q.it){ b.classList.add("good"); $app.querySelectorAll(".opt").forEach(x=>x.disabled=true); win(); }
+    else { q.bad.push(k); oops(); renderChoose(); }
+  });
+}
+
+// ----- Grammar screens -----
+function gramScreen(cat){
+  S = {cat};
+  $app.innerHTML = `
+    <div class="top"><button class="back" id="bk">→ رجوع</button></div>
+    <h2><span class="fr">${cat.name}</span> ${cat.icon}</h2>
+    <div class="acts">
+      <button class="act" data-g="table"><span class="ic">📋</span><div><b>اتعلم القاعدة</b><span>${cat.noOrder?'القاعدة والأمثلة':'جدول التصريف والأمثلة'}</span></div></button>
+      <button class="act" data-g="fill"><span class="ic">✏️</span><div><b>كمّل الجملة</b><span>اختار الكلمة الصح للفراغ</span></div></button>
+      ${cat.noOrder?'':`<button class="act" data-g="order"><span class="ic">🔀</span><div><b>رتّب الكلمات</b><span>الجملة متلخبطة، رتبها صح</span></div></button>`}
+      <button class="act" data-g="missing"><span class="ic">🧩</span><div><b>الحروف الناقصة</b><span>كمّل حروف ${cat.noOrder?'الأداة':'الفعل'}</span></div></button>
+    </div>`;
+  document.getElementById("bk").onclick = home;
+  $app.querySelectorAll(".act").forEach(b => b.onclick = () => b.dataset.g==="table" ? tableScreen(cat) : startGame(cat,b.dataset.g));
+  window.scrollTo(0,0);
+}
+const hl = it => esc(it.fr.slice(0,it.pos)) + "<b>" + esc(it.ans) + "</b>" + esc(it.fr.slice(it.pos+it.ans.length));
+function tableScreen(cat){
+  $app.innerHTML = `
+    <div class="top"><button class="back" id="bk">→ رجوع</button></div>
+    <h2><span class="fr">${cat.name}</span> ${cat.icon}</h2>
+    <p class="rule">${cat.rule}</p>
+    <div class="tbl">${cat.table.map((r,k)=>`<button class="row" data-k="${k}"><span>🔊</span><span class="fr">${esc(r[0])}</span><span class="ra">${r[1]}</span></button>`).join("")}</div>
+    <h3 class="sub">أمثلة</h3>
+    <div class="tbl">${cat.items.map((it,k)=>`<button class="row" data-x="${k}"><span>🔊</span><span class="fr">${hl(it)}<small>${it.ar}</small></span><span class="e">${it.e}</span></button>`).join("")}</div>
+    <button class="btn" id="go">يلا نلعب ✏️</button>`;
+  document.getElementById("bk").onclick = () => gramScreen(cat);
+  document.getElementById("go").onclick = () => startGame(cat,"fill");
+  $app.querySelectorAll("[data-k]").forEach(b => b.onclick = () => speak(cat.table[+b.dataset.k][0]));
+  $app.querySelectorAll("[data-x]").forEach(b => b.onclick = () => speak(cat.items[+b.dataset.x].fr));
+  window.scrollTo(0,0);
+}
+function setupFill(){
+  const q = S.q, it = q.it;
+  q.opts = shuffle([it.ans, ...shuffle(S.cat.forms.filter(f=>f!==it.ans)).slice(0,3)]);
+  q.bad = []; q.done = false;
+  renderFill();
+}
+const capIf = (it,s) => it.pos===0 ? s[0].toUpperCase()+s.slice(1) : s;
+function renderFill(){
+  const q = S.q, it = q.it;
+  const before = it.fr.slice(0,it.pos), after = it.fr.slice(it.pos+it.ans.length);
+  $app.innerHTML = header() + promptBox(it) +
+    `<div class="sent fr">${esc(before)}<span class="blank ${q.done?'ok':''}">${q.done?esc(it.ans):'&nbsp;'}</span>${esc(after)}</div>
+     <div class="opts g2">${q.opts.map((o,k)=>`<button class="opt fr ${q.bad.includes(k)?'bad':''}" data-k="${k}" ${q.bad.includes(k)||q.done?'disabled':''}>${esc(capIf(it,o))}</button>`).join("")}</div>`;
+  wire(it);
+  $app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    const k = +b.dataset.k;
+    if (q.opts[k]===it.ans){ q.done = true; renderFill(); win(); }
+    else { q.bad.push(k); oops(); renderFill(); }
+  });
+}
+
+// ----- End -----
+function endScreen(){
+  const n = S.queue.length, s = S.first;
+  const best = load(); if (!best[S.cat.id] || s > best[S.cat.id]) { best[S.cat.id] = s; save(best); }
+  const ic = s===n ? "🏆" : s >= n*0.6 ? "🥳" : "💪";
+  const msg = s===n ? "كله صح من أول مرة!" : s >= n*0.6 ? "شغل حلو جدًا!" : "كمان مرة وهتبقي أشطر!";
+  $app.innerHTML = `
+    <div class="end">
+      <div class="ic">${ic}</div>
+      <h2>${msg}</h2>
+      <div class="sc">⭐ ${toAr(s)} من ${toAr(n)}</div>
+      <button class="btn" id="again">العب تاني</button>
+      <button class="btn alt" id="bk">رجوع للألعاب</button>
+    </div>`;
+  tone([523,659,784,1046],0.12);
+  document.getElementById("again").onclick = () => startGame(S.cat, S.game);
+  document.getElementById("bk").onclick = () => catScreen(S.cat);
+}
+
+home();
+</script>
+</body>
+</html>
